@@ -22,14 +22,15 @@ import Hero from "../components/Hero.astro"
     </Hero>
     </SectionContainer>
     <div class="space-y-24">
-    <SectionContainer id="experiencia">
+
+    <SectionContainer id="sobre-mi">
       <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
       >
-        <Briefcase class="size-8" />
-        Experiencia laboral
+        <ProfileCheck class="size-8" />
+        Sobre mí
       </h2>
-      <Experience />
+      <AboutMe />
     </SectionContainer>
 
     <SectionContainer id="proyectos">
@@ -42,15 +43,16 @@ import Hero from "../components/Hero.astro"
       <Projects />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi">
+    <SectionContainer id="experiencia">
       <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
       >
-        <ProfileCheck class="size-8" />
-        Sobre mí
+        <Briefcase class="size-8" />
+        Experiencia laboral
       </h2>
-      <AboutMe />
+      <Experience />
     </SectionContainer>
+
   </div>
   </main>
 </Layout>

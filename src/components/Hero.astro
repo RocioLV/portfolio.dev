@@ -1,16 +1,16 @@
 ---
-const personalImageAlt = "Ro LV"
-import Badge from "./Badge.astro"
-import LinkedInIcon from "./icons/LinkedIn.astro"
-import MailIcon from "../components/icons/Mail.astro"
-import SocialPill from "../components/SocialPill.astro"
+const personalImageAlt = "Ro LV";
+import Badge from "./Badge.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import SocialPill from "../components/SocialPill.astro";
 ---
 
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4">
     <img
       class="rounded-full shadow-lg size-16"
-      src="./icons/foto-perfil.png"
+      src="src/components/icons/pixelPhoto.png"
       alt={personalImageAlt}
     />
     <a
@@ -30,8 +30,7 @@ import SocialPill from "../components/SocialPill.astro"
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-  <strong>Front-end developer</strong
-    > de Santiago, Chile. Especializada en el desarrollo web de aplicaciones únicas.
+    <strong>Front-end developer</strong> de Santiago, Chile.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:lorcavillalobos@gmail.com">
@@ -44,3 +43,4 @@ import SocialPill from "../components/SocialPill.astro"
     </SocialPill>
   </nav>
 </div>
+
