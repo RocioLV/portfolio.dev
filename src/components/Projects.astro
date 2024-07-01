@@ -5,12 +5,12 @@ import LinkButton from "./LinkButton.astro";
 
 const PROJECTS = [
   {
-    title: "Data Lovers: Studio Ghibli",
+    title: "Flick this: catálogo de películas y series",
     description:
-      "Diseño y construcción de interfaz web donde se puede visualizar y manipular data de las animaciones de Studio Ghibli y poder ordenarla u obtener más información según se desee explorar.",
+      "Catálogo de películas que permite ordenar, filtrar y visualizar detalles de las películas mediante el consumo de The MovieDB.",
     link: "https://rociolv.github.io/DEV010-data-lovers/",
-    github: "https://github.com/RocioLV/DEV010-data-lovers",
-    image: "/projects/data-lovers.png",
+    github: "https://github.com/RocioLV/FLICK",
+    image: "/projects/FlickThis.jpeg",
   },
   {
     title: "Red Social: “re+, por un mundo sostenible”",
@@ -19,6 +19,14 @@ const PROJECTS = [
     link: "https://raw.githubusercontent.com/RocioLV/DEV010-social-network/testing/src/assets/prototipoFigma.png",
     github: "https://github.com/RocioLV/DEV010-social-network",
     image: "/projects/re-mobile.png",
+  },
+  {
+    title: "Data Lovers: Studio Ghibli",
+    description:
+      "Diseño y construcción de interfaz web donde se puede visualizar y manipular data de las animaciones de Studio Ghibli y poder ordenarla u obtener más información según se desee explorar.",
+    link: "https://rociolv.github.io/DEV010-data-lovers/",
+    github: "https://github.com/RocioLV/DEV010-data-lovers",
+    image: "/projects/data-lovers.png",
   },
   {
     title: "Text analyzer",
@@ -31,7 +39,7 @@ const PROJECTS = [
 ];
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-10">
   {
     PROJECTS.map(({ image, title, description, link, github }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
@@ -42,14 +50,14 @@ const PROJECTS = [
         </div>
 
         <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
             {title}
           </h3>
           <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
           <footer class="flex items-end justify-start mt-4 gap-x-4">
             {github && (
               <LinkButton href={github}>
-                <GitHub class="size-6" />
+                <GitHub class="size-4" />
                 Code
               </LinkButton>
             )}
