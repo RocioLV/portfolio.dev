@@ -1,50 +1,264 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-const EXPERIENCIE = [
-{
-    date: "2024 - 2025",
-    title: "Desarrolladora web",
-    company: "Autónoma",
+const experiences = [
+  {
+    period: "AGO 2024 — ACTUALIDAD",
+    role: "Desarrolladora Web Independiente",
+    organization: "Proyectos para organizaciones y clientes",
     description:
-      "Desarrollo de proyectos con un enfoque en la automatización de procesos y la gestión eficiente de datos. Implementación de sistemas web responsivos, garantizando una experiencia de usuario óptima en diversas plataformas. Diseño y rediseño de componentes frontend, priorizando la eficiencia, escalabilidad y mantenibilidad del código.",
+      "Desarrollo e implementación de sitios web profesionales e institucionales, desde el levantamiento de requerimientos hasta su publicación y mantenimiento.",
+    highlights: [
+      "Desarrollo en WordPress con temas hijo, PHP, CPT y ACF.",
+      "Implementación de soluciones para IMFD y Clínica Sinapsis.",
+      "Mejoras de accesibilidad, rendimiento, SEO técnico básico y experiencia de usuario.",
+    ],
+    tags: ["WordPress", "PHP", "ACF", "CSS", "Git"],
+    featured: true,
   },
   {
-    date: "2023 - 2024",
-    title: "Desarrolladora web front-end",
-    company: "Laboratoria",
+    period: "FEB — DIC 2020",
+    role: "Profesional Asesora",
+    organization: "SEREMI de Salud de Coquimbo",
     description:
-      "Bootcamp intensivo de 6 meses donde el aprendizaje es enfocados a proyectos, simulando un entorno laboral real basado en el auto aprendizaje continuo.",
+      "Participación en procesos de planificación y coordinación en el ámbito de la salud pública, trabajando con información técnica y seguimiento de actividades.",
+    highlights: [
+      "Coordinación y seguimiento del plan de trabajo en 15 comunas.",
+      "Organización de información y comunicación técnica.",
+    ],
+    tags: ["Coordinación", "Planificación", "Análisis"],
+    featured: false,
   },
   {
-    date: "2021 a 2023",
-    title: "Ilustradora",
-    company: "Independiente",
+    period: "FEB 2014 — NOV 2017",
+    role: "Asesora Técnica de Calidad",
+    organization: "Sodexo",
     description:
-      "Ilustradora con formación en técnicas tradicionales y digitales. Experiencia en una variedad de estilos pictóricos. Capaz de trabajar en proyectos de cualquier tamaño o complejidad.",
-  },
-  {
-    date: "2020",
-    title: "Nutricionista asesora",
-    company: "SEREMI de Salud Coquimbo, Chile",
-    description:
-      "Coordiné y supervisé los planes comunales de promoción de salud, realizando permanente colaboración con autoridades, escuelas, empresas y la comunidad para fomentar hábitos saludables en la región bajo lineamientos ministeriales.",
-  },
-  {
-    date: "2014 a 2017",
-    title: "Asesora técnica de calidad",
-    company: "Sodexo, Chile",
-    description:
-      "Revertí una alerta sanitaria con riesgo de cierre en un casino ubicado en sitio remoto, obteniendo un 100% de aprobación tras fiscalización posterior de la autoridad.Revertí una alerta sanitaria con riesgo de cierre en un casino ubicado en sitio remoto, obteniendo un 100% de aprobación tras fiscalización posterior de la autoridad.",
+      "Supervisión de estándares y procedimientos de calidad, con foco en cumplimiento normativo, trazabilidad y mejora de procesos.",
+    highlights: [
+      "Supervisión de registros, procedimientos y controles de calidad.",
+      "Participación en auditorías y seguimiento de acciones de mejora.",
+      "Coordinación con equipos operativos y apoyo en capacitación.",
+    ],
+    tags: ["Calidad", "Procesos", "Documentación"],
+    featured: false,
   },
 ];
 ---
 
-<ol class="relative mt-18">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
+<div class="experience-layout">
+  <div class="experience-intro">
+    <p class="experience-eyebrow">MI TRAYECTORIA</p>
+    <h3>Experiencia que conecta distintas disciplinas.</h3>
+    <p>
+      Mi recorrido profesional combina desarrollo web,
+      coordinación y gestión de calidad. Son experiencias
+      que han fortalecido mi capacidad para resolver problemas,
+      trabajar con equipos y desarrollar soluciones cuidadas.
+    </p>
+  </div>
+
+  <ol class="experience-list">
+    {
+      experiences.map((experience) => (
+        <li class="experience-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <article
+            class:list={[
+              "experience-content",
+              { "experience-featured": experience.featured },
+            ]}
+          >
+            <p class="experience-period">{experience.period}</p>
+            <h4>{experience.role}</h4>
+            <p class="experience-organization">
+              {experience.organization}
+            </p>
+            <p class="experience-description">
+              {experience.description}
+            </p>
+
+            <ul class="experience-highlights">
+              {experience.highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+
+            <div class="experience-tags">
+              {experience.tags.map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  .experience-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(28px, 6vw, 80px);
+    padding: 24px 0 48px;
+    color: #f0eafe;
   }
-</ol>
+
+  .experience-intro {
+    max-width: 390px;
+  }
+
+  .experience-eyebrow {
+    margin-bottom: 15px;
+    color: #ff825b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+  }
+
+  .experience-intro h3 {
+    margin: 0 0 22px;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+  }
+
+  .experience-intro > p:last-child {
+    color: #c3b8d1;
+    font-size: 0.92rem;
+    line-height: 1.85;
+  }
+
+  .experience-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .experience-item {
+    position: relative;
+    padding: 0 0 34px 32px;
+    border-left: 1px solid rgba(185, 152, 231, 0.23);
+  }
+
+  .experience-item:last-child {
+    padding-bottom: 0;
+    border-left-color: transparent;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    top: 5px;
+    left: -7px;
+    display: grid;
+    place-items: center;
+    width: 13px;
+    height: 13px;
+    border: 2px solid #b998e7;
+    border-radius: 50%;
+    background: #191423;
+  }
+
+  .timeline-marker span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ff825b;
+  }
+
+  .experience-content {
+    padding: 24px;
+    border: 1px solid rgba(185, 152, 231, 0.16);
+    border-radius: 14px;
+    background: rgba(36, 27, 50, 0.48);
+  }
+
+  .experience-featured {
+    border-color: rgba(255, 130, 91, 0.27);
+    background: rgba(68, 48, 97, 0.26);
+  }
+
+  .experience-period {
+    margin-bottom: 9px;
+    color: #ff997b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .experience-content h4 {
+    margin: 0;
+    font-size: 1.12rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .experience-organization {
+    margin-top: 6px;
+    color: #b998e7;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .experience-description {
+    margin-top: 17px;
+    color: #c8bed4;
+    font-size: 0.87rem;
+    line-height: 1.75;
+  }
+
+  .experience-highlights {
+    margin: 16px 0 0;
+    padding-left: 18px;
+    color: #c8bed4;
+    font-size: 0.84rem;
+    line-height: 1.75;
+    list-style: disc;
+  }
+
+  .experience-highlights li + li {
+    margin-top: 5px;
+  }
+
+  .experience-highlights li::marker {
+    color: #ff825b;
+  }
+
+  .experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .experience-tags span {
+    padding: 6px 10px;
+    border: 1px solid rgba(185, 152, 231, 0.2);
+    border-radius: 6px;
+    color: #cfbee4;
+    font-size: 0.71rem;
+  }
+
+  @media (max-width: 850px) {
+    .experience-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .experience-intro {
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .experience-item {
+      padding-left: 24px;
+    }
+
+    .experience-content {
+      padding: 20px;
+    }
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHub.astro";
+import MailIcon from "./icons/Mail.astro";
+---
+
+<section class="contact-content" aria-labelledby="contact-title">
+  <div class="contact-copy">
+    <p class="contact-eyebrow">HABLEMOS</p>
+
+    <h3 id="contact-title">
+      ¿Tienes un proyecto o una oportunidad
+      <span>en mente?</span>
+    </h3>
+
+    <p class="contact-description">
+      Me interesa colaborar en proyectos donde pueda aportar
+      desde el desarrollo Frontend, aprender junto a otros
+      equipos y seguir explorando nuevas tecnologías.
+      Si quieres conocer más sobre mi trabajo o conversar
+      sobre una oportunidad, estaré encantada de conectar.
+    </p>
+
+    <a
+      class="contact-email"
+      href="mailto:lorcavillalobos@gmail.com"
+    >
+      <MailIcon class="size-5" />
+      Escríbeme por correo
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <div class="contact-links">
+    <p class="links-label">TAMBIÉN PUEDES ENCONTRARME EN</p>
+
+    <a
+      href="https://www.linkedin.com/in/rociolv-developer/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-link"
+    >
+      <span class="link-name">
+        <LinkedInIcon class="size-5" />
+        LinkedIn
+      </span>
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <a
+      href="https://github.com/RocioLV"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contact-link"
+    >
+      <span class="link-name">
+        <GitHubIcon class="size-5" />
+        GitHub
+      </span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .contact-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+    gap: clamp(36px, 7vw, 100px);
+    align-items: center;
+    padding: 36px 0 56px;
+    border-top: 1px solid rgba(185, 152, 231, 0.2);
+    color: #f0eafe;
+  }
+
+  .contact-eyebrow {
+    margin-bottom: 18px;
+    color: #ff825b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  .contact-copy h3 {
+    max-width: 650px;
+    margin: 0;
+    font-size: clamp(1.9rem, 3.5vw, 3rem);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+  }
+
+  .contact-copy h3 span {
+    color: #b998e7;
+  }
+
+  .contact-description {
+    max-width: 590px;
+    margin-top: 22px;
+    color: #c8bed4;
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    margin-top: 30px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: #ff825b;
+    color: #191423;
+    font-size: 0.87rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .contact-email:hover {
+    background: #ff9b7a;
+    transform: translateY(-2px);
+  }
+
+  .contact-links {
+    padding: 26px;
+    border: 1px solid rgba(185, 152, 231, 0.2);
+    border-radius: 16px;
+    background: rgba(36, 27, 50, 0.45);
+  }
+
+  .links-label {
+    margin-bottom: 20px;
+    color: #ae9fc1;
+    font-size: 0.67rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(240, 234, 254, 0.12);
+    color: #f0eafe;
+    text-decoration: none;
+    font-size: 0.93rem;
+    transition: color 0.2s ease;
+  }
+
+  .contact-link:last-child {
+    border-bottom: none;
+  }
+
+  .contact-link:hover {
+    color: #ff997b;
+  }
+
+  .link-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .contact-content a:focus-visible {
+    outline: 2px solid #ff825b;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 760px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 28px 0 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-email,
+    .contact-link {
+      transition: none;
+    }
+
+    .contact-email:hover {
+      transform: none;
+    }
+  }
+</style>

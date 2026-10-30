@@ -1,0 +1,57 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+const icons: Record<string, string> = {
+  React: "devicon-react-original colored",
+  TypeScript: "devicon-typescript-plain colored",
+  JavaScript: "devicon-javascript-plain colored",
+  WordPress: "devicon-wordpress-plain",
+  AWS: "devicon-amazonwebservices-plain-wordmark colored",
+  Vite: "devicon-vitejs-plain colored",
+  CSS: "devicon-css3-plain colored",
+  PHP: "devicon-php-plain colored",
+  Jest: "devicon-jest-plain colored",
+  Git: "devicon-git-plain colored",
+  GitHub: "devicon-github-original",
+  Vercel: "devicon-vercel-original",
+  YAML: "devicon-yaml-plain colored",
+};
+
+const iconClass = icons[name];
+---
+
+<span class="tech-badge">
+  {
+    iconClass && (
+      <i class={iconClass} aria-hidden="true"></i>
+    )
+  }
+  <span>{name}</span>
+</span>
+
+<style>
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid rgba(185, 152, 231, 0.22);
+    border-radius: 7px;
+    background: rgba(145, 98, 207, 0.08);
+    color: #e7dcf2;
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .tech-badge i {
+    font-size: 1.15rem;
+    line-height: 1;
+    color: #d7c5eb;
+  }
+</style>

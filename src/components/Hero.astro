@@ -1,47 +1,350 @@
 ---
-const personalImageAlt = "Rocio LV";
-import Badge from "./Badge.astro";
 import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHub.astro";
 import MailIcon from "../components/icons/Mail.astro";
-import SocialPill from "../components/SocialPill.astro";
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="/projects/pixelPhoto.png"
-      alt={personalImageAlt}
-    />
-    <a
-      href="https://www.linkedin.com/in/rociolv-developer/"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible para trabajar</Badge>
-    </a>
+<div class="hero-card">
+  <div class="hero-content">
+    <div class="hero-intro">
+      <img
+        src="/projects/pixelPhoto.png"
+        alt="Avatar ilustrado de Rocío"
+        class="hero-avatar"
+        width="54"
+        height="54"
+      />
+    </div>
+
+    <p class="hero-eyebrow">
+      FRONTEND DEVELOPER / CLOUD COMPUTING
+    </p>
+
+    <h1>
+      Hola, soy<br />
+      Rocío <span class="hero-accent">:)</span>
+    </h1>
+
+    <p class="hero-headline">
+      Desarrollo experiencias digitales que combinan
+      <span>diseño, funcionalidad y tecnología.</span>
+    </p>
+
+    <p class="hero-description">
+      Trabajo con React, TypeScript y WordPress para crear
+      soluciones web accesibles y responsive. Actualmente amplío
+      mis conocimientos en AWS e infraestructura Cloud.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/#proyectos" class="hero-button hero-button-primary">
+        Ver proyectos <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <nav class="hero-socials" aria-label="Enlaces principales">
+      <a
+        href="https://www.linkedin.com/in/rociolv-developer/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hero-pill"
+      >
+        <LinkedInIcon class="size-4" />
+        LinkedIn
+      </a>
+
+      <a
+        href="https://github.com/RocioLV"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hero-pill"
+      >
+        <GitHubIcon class="size-4" />
+        GitHub
+      </a>
+
+      <a
+        href="mailto:lorcavillalobos@gmail.com"
+        class="hero-pill"
+      >
+        <MailIcon class="size-4" />
+        Correo
+      </a>
+    </nav>
   </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    Hola, soy Rocío :)
-  </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    <strong>Front End Developer 👩🏻‍💻</strong> de Santiago, Chile.
-  </p>
-  <p>JavaScript | HTML | CSS | React | Typescript | Node.js | SQL | PL/SQL | Oracle | AWS | Git | SCRUM</p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:lorcavillalobos@gmail.com">
-      <MailIcon class="size-4" />
-      Contáctame
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/rociolv-developer/">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-  </nav>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="art-orbit orbit-one"></div>
+    <div class="art-orbit orbit-two"></div>
+    <div class="art-core"></div>
+    <span class="art-label">CREATIVE × CODE</span>
+  </div>
 </div>
 
+<style>
+  .hero-card {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+    gap: 24px;
+    align-items: center;
+    overflow: visible;
+    min-height: 540px;
+    padding: clamp(32px, 5vw, 68px);
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #f0eafe;
+  }
+
+  
+.hero-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+
+  background:
+    radial-gradient(
+      ellipse at 82% 22%,
+      rgba(145, 98, 207, 0.34),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 88% 72%,
+      rgba(255, 130, 91, 0.12),
+      transparent 48%
+    );
+
+  pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 710px;
+  }
+
+  .hero-intro {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hero-avatar {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border: 2px solid rgba(240, 234, 254, 0.3);
+    border-radius: 50%;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 16px;
+    color: #c9a5f5;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    color: #f3ecff;
+  }
+
+  .hero-accent {
+    color: #ff825b;
+  }
+
+  .hero-headline {
+    max-width: 670px;
+    margin-top: 24px;
+    color: #f0eafe;
+    font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-headline span {
+    color: #c9a5f5;
+  }
+
+  .hero-description {
+    max-width: 560px;
+    margin-top: 20px;
+    color: #c7bdd3;
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 650;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .hero-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-button-primary {
+    background: #ff825b;
+    color: #191423;
+  }
+
+  .hero-button-primary:hover {
+    background: #ff9b7a;
+  }
+
+  .hero-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 14px;
+    border: 1px solid rgba(240, 234, 254, 0.18);
+    border-radius: 999px;
+    color: #ddd3ea;
+    text-decoration: none;
+    font-size: 0.84rem;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .hero-pill:hover,
+  .hero-pill:focus-visible {
+    color: #ffffff;
+    border-color: rgba(255, 130, 91, 0.45);
+    background: rgba(255, 130, 91, 0.08);
+  }
+
+  .hero-card a:focus-visible {
+    outline: 2px solid #ff825b;
+    outline-offset: 4px;
+  }
+
+  .hero-art {
+    position: relative;
+    min-height: 330px;
+    display: grid;
+    place-items: center;
+  }
+
+  .art-core {
+    width: min(80%, 280px);
+    aspect-ratio: 1;
+    border-radius: 38% 62% 61% 39%;
+    background:
+      radial-gradient(
+        circle at 30% 25%,
+        #f6b09a 0%,
+        #ff825b 24%,
+        #a56bcb 57%,
+        #443061 90%
+      );
+    filter: drop-shadow(0 20px 45px rgba(255, 130, 91, 0.16));
+    transform: rotate(-18deg);
+  }
+
+  .art-orbit {
+    position: absolute;
+    width: 95%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(240, 234, 254, 0.12);
+    border-radius: 50%;
+  }
+
+  .orbit-one {
+    transform: rotate(35deg) scaleY(0.64);
+  }
+
+  .orbit-two {
+    transform: rotate(-40deg) scaleY(0.64);
+  }
+
+  .art-label {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    color: #d6c4e7;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+  }
+
+  @media (max-width: 900px) {
+    .hero-card {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-art {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-card {
+      padding: 28px 22px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+    }
+
+    .hero-description {
+      font-size: 0.9rem;
+    }
+
+    .hero-socials {
+      gap: 10px;
+    }
+
+    .hero-pill {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-button,
+    .hero-pill {
+      transition: none;
+    }
+
+    .hero-button:hover {
+      transform: none;
+    }
+  }
+</style>
