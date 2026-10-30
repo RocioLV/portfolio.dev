@@ -1,33 +1,181 @@
 ---
-const personalImageAlt = "Rocio LV";
+import TechBadge from "./TechBadge.astro";
+const skills = [
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "WordPress",
+  "AWS",
+];
 ---
 
-<article
-  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
->
-  <div
-    class="[&>p]:mb-4 [&>p>strong]:text-pink-400 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  >
+<article class="about-layout">
+  <div class="about-content">
+    <p class="about-eyebrow">UN POCO SOBRE MÍ</p>
+
+    <h3>
+      Una mirada <span>creativa y versátil </span>
+      al desarrollo web.
+    </h3>
+
     <p>
-      Soy desarrolladora front-end con una sólida formación en nutrición y una
-      pasión innata por el arte. Mi <strong
-        >alta capacidad de aprendizaje, adaptabilidad y creatividad
-      </strong>me permiten aportar valiosas habilidades a equipos tecnológicos.
+      Soy desarrolladora Frontend con experiencia creando
+      aplicaciones web con React y TypeScript, además de
+      implementar sitios institucionales y profesionales
+      con WordPress.
     </p>
 
     <p>
-      Como desarrolladora en crecimiento, estoy
-      <strong
-        >comprometida a seguir aprendiendo y evolucionando hacia un rol full-stack</strong>, creando soluciones innovadoras y efectivas en el desarrollo web.
+      Mi trayectoria combina tecnología, gestión de calidad
+      y artes visuales. Esta experiencia multidisciplinaria
+      me permite abordar los proyectos con creatividad,
+      atención al detalle y una perspectiva orientada a
+      resolver problemas.
     </p>
+
+    <p>
+      Actualmente continúo profundizando mis conocimientos
+      en AWS e infraestructura Cloud, con interés en el
+      despliegue, la seguridad y el funcionamiento de las
+      aplicaciones más allá de su interfaz.
+    </p>
+
+    <div class="about-skills" aria-label="Tecnologías principales">
+      {skills.map((skill) => (
+        <TechBadge name={skill} />
+      ))}
+    </div>
   </div>
 
-  <img
-    width="200"
-    height="200"
-    src="/projects/perfil.jpeg"
-    alt={personalImageAlt}
-    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
-    style="object-position: 50% 50%"
-  />
+  <div class="about-visual">
+    <div class="photo-frame">
+      <img
+        src="/projects/pixelPhoto.png"
+        alt="Pixelart de Rocío Lorca"
+        width="400"
+        height="400"
+        loading="lazy"
+      />
+    </div>
+
+    <p class="photo-caption">
+      Desarrollo · Diseño · Creatividad
+    </p>
+  </div>
 </article>
+
+<style>
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.8fr);
+    align-items: center;
+    gap: clamp(36px, 7vw, 100px);
+    padding: 24px 0 48px;
+    color: #f0eafe;
+  }
+
+  .about-content {
+    max-width: 680px;
+  }
+
+  .about-eyebrow {
+    margin-bottom: 16px;
+    color: #ff825b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  h3 {
+    max-width: 650px;
+    margin: 0 0 28px;
+    font-size: clamp(1.6rem, 3vw, 2.45rem);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.045em;
+  }
+
+  h3 span {
+    color: #b998e7;
+  }
+
+  .about-content > p:not(.about-eyebrow) {
+    margin-bottom: 17px;
+    color: #c9c0d5;
+    font-size: 0.96rem;
+    line-height: 1.85;
+  }
+
+  .about-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 28px;
+  }
+
+  .skill-tag {
+    padding: 8px 13px;
+    border: 1px solid rgba(185, 152, 231, 0.23);
+    border-radius: 999px;
+    background: rgba(145, 98, 207, 0.09);
+    color: #d8c5ed;
+    font-size: 0.77rem;
+    font-weight: 500;
+  }
+
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: min(100%, 285px);
+    aspect-ratio: 1;
+    padding: 7px;
+    overflow: hidden;
+    border: 1px solid rgba(185, 152, 231, 0.4);
+    border-radius: 24px;
+    background: linear-gradient(
+      135deg,
+      rgba(145, 98, 207, 0.28),
+      rgba(255, 130, 91, 0.1)
+    );
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 17px;
+  }
+
+  .photo-caption {
+    color: #a99db8;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .about-visual {
+      align-items: flex-start;
+    }
+
+    .photo-frame {
+      width: 210px;
+    }
+
+    .photo-caption {
+      text-align: left;
+    }
+  }
+</style>

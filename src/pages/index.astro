@@ -1,58 +1,113 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
 
-import AboutMe from "../components/AboutMe.astro"
-import Briefcase from "../components/icons/Briefcase.astro"
-import CodeIcon from "../components/icons/Code.astro"
-import Experience from "../components/Experience.astro"
-import ProfileCheck from "../components/icons/ProfileCheck.astro"
-import Projects from "../components/Projects.astro"
-import SectionContainer from "../components/SectionContainer.astro"
-import Hero from "../components/Hero.astro"
+import Hero from "../components/Hero.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Contact from "../components/Contact.astro";
+
+import SectionContainer from "../components/SectionContainer.astro";
+
+import ProfileCheck from "../components/icons/ProfileCheck.astro";
+import CodeIcon from "../components/icons/Code.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
 ---
 
 <Layout
-  title="Portfolio de Rocío LV - Desarrolladora Web Front-End"
-  description="Contrata a Rocío LV para crear tu aplicación web."
+  title="Rocío Lorca | Frontend Developer & Cloud Computing"
+  description="Portafolio de Rocío Lorca, desarrolladora Frontend con experiencia en React, TypeScript y WordPress, y formación en AWS y Cloud Computing."
 >
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      </slot>
-    </Hero>
-    </SectionContainer>
-    <div class="space-y-24">
-
-    <SectionContainer id="sobre-mi">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-      >
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </h2>
-      <AboutMe />
+  <main class="portfolio-main">
+    <!-- Presentación principal -->
+    <SectionContainer class="hero-section">
+      <Hero />
     </SectionContainer>
 
-    <SectionContainer id="proyectos">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-      >
-        <CodeIcon class="size-7" />
-        Proyectos
-      </h2>
-      <Projects />
-    </SectionContainer>
+    <div class="portfolio-sections">
+      <!-- Sobre mí -->
+      <SectionContainer id="sobre-mi">
+        <h2 class="section-heading">
+          <ProfileCheck class="size-7" />
+          Sobre mí
+        </h2>
 
-    <SectionContainer id="experiencia">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-      >
-        <Briefcase class="size-8" />
-        Experiencia laboral
-      </h2>
-      <Experience />
-    </SectionContainer>
+        <AboutMe />
+      </SectionContainer>
 
-  </div>
+      <!-- Proyectos -->
+      <SectionContainer id="proyectos">
+        <h2 class="section-heading">
+          <CodeIcon class="size-7" />
+          Proyectos
+        </h2>
+
+        <Projects />
+      </SectionContainer>
+
+      <!-- Experiencia -->
+      <SectionContainer id="experiencia">
+        <h2 class="section-heading">
+          <Briefcase class="size-7" />
+          Experiencia
+        </h2>
+
+        <Experience />
+      </SectionContainer>
+
+      <!-- Contacto -->
+      <SectionContainer id="contacto">
+        <Contact />
+      </SectionContainer>
+    </div>
   </main>
 </Layout>
+
+<style>
+  .portfolio-main {
+    width: 100%;
+    padding: 0 24px 100px;
+    background: transparent;
+  }
+
+  .portfolio-sections {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(88px, 11vw, 152px);
+  }
+
+  .portfolio-main :global(.hero-section) {
+    margin-bottom: 110px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 30px;
+    color: #f0eafe;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+  }
+
+  .section-heading :global(svg) {
+    flex-shrink: 0;
+    color: #ff825b;
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-main {
+      padding: 0 16px 72px;
+    }
+
+    .portfolio-main :global(.hero-section) {
+      margin-bottom: 64px;
+    }
+
+    .portfolio-sections {
+      gap: 80px;
+      padding-inline: 12px;
+    }
+  }
+</style>

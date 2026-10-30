@@ -1,103 +1,136 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
-
 const navItems = [
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
-  },
-  {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "mailto:lorcavillalobos@gmail.com",
-  },
-]
+  { title: "Sobre mí", url: "/#sobre-mi" },
+  { title: "Proyectos", url: "/#proyectos" },
+  { title: "Experiencia", url: "/#experiencia" },
+  { title: "Contacto", url: "/#contacto" },
+];
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
->
-  <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
-  >
-    {
-      navItems.map((link) => (
-        <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
-          aria-label={link.label}
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
-    <ThemeToggle />
+<header class="site-header">
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="/" class="site-logo" aria-label="Ir al inicio">
+      <span class="logo-mark">RL<span>.</span></span>
+      <span class="logo-label">Rocío Lorca</span>
+    </a>
+
+    <div class="nav-links">
+      {
+        navItems.map((item) => (
+          <a href={item.url} class="nav-link">
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
   </nav>
 </header>
 
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
-
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500")
-            } else {
-              item.classList.remove("text-yellow-500")
-            }
-          })
-        }
-      })
-    }
-
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    })
-
-    sections.forEach((section) => {
-      observer.observe(section)
-    })
-
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect()
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section)
-        })
-      }
-    }
-  })
-</script>
-
 <style>
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    padding: 14px 24px;
+    background: #191423;
+    border: none;
+    box-shadow: none;
   }
 
-  @keyframes nav-shadown {
-    to {
-      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    color: #f0eafe;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .logo-mark {
+    color: #f0eafe;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.08em;
+  }
+
+  .logo-mark span {
+    color: #ff825b;
+  }
+
+  .logo-label {
+    color: #f0eafe;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 28px;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    color: #d6cde5;
+    font-size: 0.84rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #ff825b;
+  }
+
+  .site-header a:focus-visible {
+    outline: 2px solid #ff825b;
+    outline-offset: 5px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      padding: 12px 16px;
+    }
+
+    .site-nav {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-label {
+      display: none;
+    }
+
+    .nav-links {
+      width: 100%;
+      margin-left: 0;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-link {
+      font-size: 0.77rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link {
+      transition: none;
     }
   }
 </style>
