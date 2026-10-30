@@ -1,17 +1,15 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
-
 const navItems = [
   { title: "Sobre mí", url: "/#sobre-mi" },
   { title: "Proyectos", url: "/#proyectos" },
   { title: "Experiencia", url: "/#experiencia" },
-  { title: "Contacto", url: "mailto:lorcavillalobos@gmail.com" },
+  { title: "Contacto", url: "/#contacto" },
 ];
 ---
 
 <header class="site-header">
   <nav class="site-nav" aria-label="Navegación principal">
-    <a href="/" class="site-logo" aria-label="Inicio">
+    <a href="/" class="site-logo" aria-label="Ir al inicio">
       <span class="logo-mark">RL<span>.</span></span>
       <span class="logo-label">Rocío Lorca</span>
     </a>
@@ -25,10 +23,6 @@ const navItems = [
         ))
       }
     </div>
-
-    <div class="nav-actions">
-      <ThemeToggle />
-    </div>
   </nav>
 </header>
 
@@ -40,32 +34,35 @@ const navItems = [
     width: 100%;
     padding: 14px 24px;
     background: #191423;
-    border: 0;
+    border: none;
     box-shadow: none;
   }
 
   .site-nav {
-    max-width: 1180px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 32px;
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
   }
 
   .site-logo {
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
+    color: #f0eafe;
     text-decoration: none;
     white-space: nowrap;
   }
 
   .logo-mark {
+    color: #f0eafe;
     font-size: 1.45rem;
     font-weight: 800;
     letter-spacing: -0.08em;
-    color: #f0eafe;
   }
 
   .logo-mark span {
@@ -73,32 +70,33 @@ const navItems = [
   }
 
   .logo-label {
+    color: #f0eafe;
     font-size: 0.88rem;
     font-weight: 600;
-    color: #f0eafe;
   }
 
-  .nav-links,
-  .nav-actions {
+  .nav-links {
     display: flex;
     align-items: center;
-    gap: 26px;
+    justify-content: flex-end;
+    gap: 28px;
+    margin-left: auto;
   }
 
   .nav-link {
+    color: #d6cde5;
     font-size: 0.84rem;
     font-weight: 500;
     text-decoration: none;
-    color: #d6cde5;
+    white-space: nowrap;
     transition: color 0.2s ease;
   }
 
-  .nav-link:hover,
-  .nav-link:focus-visible {
+  .nav-link:hover {
     color: #ff825b;
   }
 
-  .site-header :global(a:focus-visible) {
+  .site-header a:focus-visible {
     outline: 2px solid #ff825b;
     outline-offset: 5px;
     border-radius: 4px;
@@ -111,7 +109,7 @@ const navItems = [
 
     .site-nav {
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .logo-label {
@@ -119,18 +117,14 @@ const navItems = [
     }
 
     .nav-links {
-      order: 3;
       width: 100%;
+      margin-left: 0;
       justify-content: space-between;
       gap: 10px;
     }
 
     .nav-link {
       font-size: 0.77rem;
-    }
-
-    .nav-actions {
-      margin-left: auto;
     }
   }
 
